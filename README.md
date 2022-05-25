@@ -34,10 +34,9 @@ swift으로 ios 베이스 앱으로 개발 예정
 
 ## 현재 간단한 프로토 타입
 
+https://user-images.githubusercontent.com/78361650/170195635-482632d0-713a-4fb5-8da1-0a327015510a.mp4
 
 
-
-https://user-images.githubusercontent.com/78361650/170190120-807bdb10-582a-44b1-be3b-43cc0e574cad.mp4
 
 
 

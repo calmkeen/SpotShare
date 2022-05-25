@@ -27,10 +27,6 @@ swift으로 ios 베이스 앱으로 개발 예정
 - swift
 - fireBase
 
-[추후 예정]
-
-추후 안드로이드 도입시 : kotlin
-서버 따로 증설시 :  aws, spring
 
 ## 현재 간단한 프로토 타입
 

@@ -32,8 +32,10 @@ swift으로 ios 베이스 앱으로 개발 예정
 
 https://user-images.githubusercontent.com/78361650/170195635-482632d0-713a-4fb5-8da1-0a327015510a.mp4
 
+- 5/26 content View 및  UI 구조 변경
 
-
-
+<img width="399" alt="image" src="https://user-images.githubusercontent.com/78361650/170434994-14400679-3ca9-4c0d-9055-206f89762edf.png">
+<img width="220" alt="image" src="https://user-images.githubusercontent.com/78361650/170435085-a1a5d706-8d61-4fed-90cd-d51fb359bbf0.png">
+<img width="512" alt="image" src="https://user-images.githubusercontent.com/78361650/170435179-3abae5b4-f339-48b2-aff5-a84e329983e2.png">
 
 

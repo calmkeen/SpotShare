@@ -34,8 +34,14 @@ https://user-images.githubusercontent.com/78361650/170195635-482632d0-713a-4fb5-
 
 - 5/26 content View 및  UI 구조 변경
 
+- 컨텐츠 이미지 뷰 및 자신의 앨범 관련 뷰를 사이드 탭 오버레이로 보여줄수 있다.
+
 <img width="399" alt="image" src="https://user-images.githubusercontent.com/78361650/170434994-14400679-3ca9-4c0d-9055-206f89762edf.png">
+- 앨범을 태그별로 볼수도 있게 정리해두었다.
+
 <img width="220" alt="image" src="https://user-images.githubusercontent.com/78361650/170435085-a1a5d706-8d61-4fed-90cd-d51fb359bbf0.png">
+- 테마 별 라인, 사진 저장시  context의  ui추가
+
 <img width="512" alt="image" src="https://user-images.githubusercontent.com/78361650/170435179-3abae5b4-f339-48b2-aff5-a84e329983e2.png">
 
 

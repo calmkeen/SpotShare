@@ -27,7 +27,7 @@ swift으로 ios 베이스 앱으로 개발 예정
 - swift
 - fireBase
 
-##뷰 프로토 타입 설계
+## 뷰 프로토 타입 설계
 <img width="919" alt="image" src="https://user-images.githubusercontent.com/78361650/170436881-b5d56384-0782-4175-8e40-19a6922bc2f3.png">
 
 

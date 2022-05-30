@@ -9,12 +9,9 @@ import Foundation
 import UIKit
 
 
-struct ImageData{
-    var title: String = ""
-    var image: UIImage
-    var location: String = ""
-    var date: Date
-
+struct Content{
+    var title: String
+    var image: Data!
     }
     
 

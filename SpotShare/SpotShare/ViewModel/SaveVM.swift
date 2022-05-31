@@ -87,6 +87,27 @@ class SaveVM: UIViewController{
            print("Could not save. (error), (error.userInfo)")
          }
     }
+    //Coredata 삭제
+    func deleteCoreData(title: String){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Contact",
+                                       in: context)!
+        let person = NSManagedObject(entity: entity,
+                                       insertInto: context)
+        context.delete(person)
+        print(person)
+        ImageNameField.text = ""
+        ImageView.image = UIImage(named: "주술회전")
+
+        do {
+            try context.save()
+            
+        } catch {
+            print("error fetching data from context \(error)")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -109,19 +130,8 @@ class SaveVM: UIViewController{
         let alert = UIAlertController(title: "삭제", message: "삭제되었습니다.", preferredStyle: UIAlertController.Style.alert)
         let del = UIAlertAction(title: "ok", style: .cancel)
         alert.addAction(del)
+        deleteCoreData(title: "")
         present(alert, animated: true)
-        
-        //Coredata 삭제
-//        func delete(item: Item)
-//            context.delete(item)
-//
-//            do {
-//                try context.save()
-//            } catch {
-//                print("error fetching data from context \(error)")
-//            }
-//
-        
         
     }
 }

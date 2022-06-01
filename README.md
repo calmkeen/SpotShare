@@ -19,6 +19,7 @@
 네이버 맵등으로 스팟을 저장하는 사람들을 위해 맵뷰를 불러 지도의 스팟마다 유명 태그를 볼수 있게 할 예정이다.
 
 ## 기술 스택
+[wiki 참고](https://github.com/calmkeen/SpotShare/wiki/%EC%A7%84%EC%B2%99%EC%82%AC%ED%95%AD) 
 
 swift으로 ios 베이스 앱으로 개발 예정
 

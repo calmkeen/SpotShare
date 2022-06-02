@@ -65,7 +65,7 @@ class SaveVM: UIViewController{
         
         // Do any additional setup after loading the view.
     }
-    
+//CoreData 저장
     func saveCoreData(title: String){
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -81,8 +81,6 @@ class SaveVM: UIViewController{
         do {
            try context.save()
            models.append(person)
-            print("성공")
-            print(person)
          } catch let error as NSError {
            print("Could not save. (error), (error.userInfo)")
          }
@@ -96,7 +94,7 @@ class SaveVM: UIViewController{
         let person = NSManagedObject(entity: entity,
                                        insertInto: context)
         context.delete(person)
-        print(person)
+        //CoreData 값 초기화시 임의 값으로 전환
         ImageNameField.text = ""
         ImageView.image = UIImage(named: "주술회전")
 
@@ -119,6 +117,7 @@ class SaveVM: UIViewController{
     
     @IBAction func IamgePhotoSaveBtn(_ sender: UIButton){
         let alert = UIAlertController(title: "저장", message: "저장되었습니다.", preferredStyle: UIAlertController.Style.alert)
+        //CoreData 저장함수 호출
         saveCoreData(title: "")
         let save = UIAlertAction(title: "ok", style: .default)
         alert.addAction(save)
@@ -130,6 +129,7 @@ class SaveVM: UIViewController{
         let alert = UIAlertController(title: "삭제", message: "삭제되었습니다.", preferredStyle: UIAlertController.Style.alert)
         let del = UIAlertAction(title: "ok", style: .cancel)
         alert.addAction(del)
+        //CoreData 삭제 함수 호출
         deleteCoreData(title: "")
         present(alert, animated: true)
         
@@ -139,7 +139,7 @@ class SaveVM: UIViewController{
 
 
 
-
+// saveVM 알람기능 확장
 extension SaveVM: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     func AlertBtnClick(){
         let alert = UIAlertController(title: "선택", message: "이미지 첨부 방식을 선택해 주세요", preferredStyle: .actionSheet)

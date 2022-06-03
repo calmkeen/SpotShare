@@ -42,9 +42,8 @@ class SaveVM: UIViewController{
         var context: NSManagedObjectContext {
             return self.persistentContainer.viewContext
         }
-        
-        
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,10 +8,9 @@
 import Foundation
 import UIKit
 
-
-struct Content{
+struct Content {
     var title: String
     var image: Data!
-    }
-    
+}
+
 

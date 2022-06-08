@@ -21,7 +21,8 @@ class SaveVM: UIViewController{
     @IBOutlet weak var SaveImageBtn: UIButton!
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var ImageNameField: UITextField!
-    @IBOutlet var ChooseAlert: UIButton!
+    @IBOutlet weak var ChooseAlert: UIButton!
+    @IBOutlet weak var testbtn:UIButton!
     
     //coredata
 
@@ -45,24 +46,33 @@ class SaveVM: UIViewController{
     }
 
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-          return
-        }
-        // 2
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Contact")
-        // 3
-        do {
-          models = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-          print("Could not fetch. (error), (error.userInfo)")
-        }
-        
-        
-        
-        // Do any additional setup after loading the view.
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//          return
+//        }
+//        // 2
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Contact")
+//        // 3
+//        do {
+//          models = try managedContext.fetch(fetchRequest)
+//        } catch let error as NSError {
+//          print("Could not fetch. (error), (error.userInfo)")
+//        }
+//
+//
+//
+//        // Do any additional setup after loading the view.
+//    }
+    //location 연결
+    @IBAction func tesBtn(_ sender: UIButton){
+        guard let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else { return }
+                // 화면 전환 애니메이션 설정
+                secondViewController.modalTransitionStyle = .coverVertical
+                // 전환된 화면이 보여지는 방법 설정 (fullScreen)
+                secondViewController.modalPresentationStyle = .fullScreen
+                self.present(secondViewController, animated: true, completion: nil)
     }
 //CoreData 저장
     func saveCoreData(title: String){

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Nk-CM-Id4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -171,6 +171,15 @@
                                     <action selector="IamgePhotoSaveBtn:" destination="6Nk-CM-Id4" eventType="touchUpInside" id="OXK-48-NSS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcX-kV-CrB">
+                                <rect key="frame" x="84" y="593" width="61" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="테스트"/>
+                                <connections>
+                                    <action selector="tesBtn:" destination="6Nk-CM-Id4" eventType="touchUpInside" id="60i-hw-GyG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VJ5-ZH-F3x"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -191,6 +200,7 @@
                         <outlet property="SaveImageBtn" destination="Ey2-th-O6E" id="UG9-IB-5pd"/>
                         <outlet property="deleteImageBtn" destination="OGj-Qd-cNt" id="Z7e-SQ-IRX"/>
                         <outlet property="photoTitleLabel" destination="tcH-M2-su0" id="SKD-GO-HP8"/>
+                        <outlet property="testbtn" destination="GcX-kV-CrB" id="Xel-NC-dIl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1U-Dm-1mL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

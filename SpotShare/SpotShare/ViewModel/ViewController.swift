@@ -37,10 +37,10 @@ class ViewController: UIViewController {
     let iconView = UIView()
     let weeekendSpotScrollView: UIScrollView = {
         let SpotScroll = UIScrollView()
+        SpotScroll.backgroundColor = .white
         return SpotScroll
     }()
-    
-    
+
     let SpotStack: UIStackView = {
         let SpotStack = UIStackView()
         SpotStack.axis = .horizontal
@@ -49,15 +49,27 @@ class ViewController: UIViewController {
         return SpotStack
     }()
     
-    let weeekendphotoScrollView = UIScrollView()
+    let weeekendphotoScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+       return scrollView
+    }()
     let weekendphotoImageList = UIImageView()
     let weekendPhotoImageLabel = UILabel()
     
-    let weekendPayScrollView = UIScrollView()
+    let weekendPayScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .white
+       return scrollView
+    }()
     let weekendPayImageList = UIImageView()
     let weekendPayImageLabel = UILabel()
     
-    let weekendDirectorView = UIView()
+    let weekendDirectorView: UIView = {
+        let DirectorView = UIScrollView()
+        DirectorView.backgroundColor = .white
+       return DirectorView
+    }()
     let weekendDirectorImageList = UIImageView()
     let weekendDirectorImageLabel = UILabel()
     
@@ -85,30 +97,25 @@ class ViewController: UIViewController {
         //스크롤 뷰들
         self.mainViewPage.addArrangedSubview(weeekendSpotScrollView)
         weeekendSpotScrollView.backgroundColor = .white
-        weeekendSpotScrollView.addSubview(SpotStack)
-        //SpotStack.addArrangedSubview(iconView)
         
-        
-        for count in 0..<100
-        {
+        for count in 0..<3 {
             let weekendSpotImageList: UIImageView = {
                 let SpotImageList = UIImageView()
                 SpotImageList.image = UIImage(named: "짱구")
                 SpotImageList.contentMode = .scaleAspectFit
                 return SpotImageList
             }()
-            
+            iconView.addSubview(weekendSpotImageList)
+            weekendSpotImageList.snp.makeConstraints{ make in
+                //make.centerX.equalTo(view.safeAreaLayoutGuide)
+            }
+            //label
             let weekendSpotImageLabel:UILabel = {
                 let SpotLabel = UILabel()
                 SpotLabel.text = "금주의 스팟!\(count+1)"
                 return SpotLabel
             }()
             iconView.addSubview(weekendSpotImageLabel)
-            iconView.addSubview(weekendSpotImageList)
-            
-            weekendSpotImageList.snp.makeConstraints{ make in
-                //make.centerX.equalTo(view.safeAreaLayoutGuide)
-            }
             weekendSpotImageLabel.snp.makeConstraints{ label in
                 //label.top.equalTo(weeekendSpotScrollView.snp.bottom).inset(15)
                 //label.left.equalTo(view.safeAreaLayoutGuide).inset(15)
@@ -116,13 +123,11 @@ class ViewController: UIViewController {
             
             SpotStack.addArrangedSubview(iconView)
         }
+        weeekendSpotScrollView.addSubview(SpotStack)
         
         self.mainViewPage.addArrangedSubview(weeekendphotoScrollView)
-        weeekendphotoScrollView.backgroundColor = .gray
         self.mainViewPage.addArrangedSubview(weekendPayScrollView)
-        weekendPayScrollView.backgroundColor = .lightGray
         self.mainViewPage.addArrangedSubview(weekendDirectorView)
-        weekendDirectorView.backgroundColor = .darkGray
         
         //view.addSubview(weekendSpotImageLabel)
         //스크롤뷰에 따를 이미지
@@ -135,7 +140,7 @@ class ViewController: UIViewController {
         //        view.addSubview(ContentViewTranfsformBtn)
         //        view.addSubview(albumViewTransformBtn)
         //        view.addSubview(SettingViewTransformBtn)
-        //
+        
         
         //mainview
         mainViewPage.snp.makeConstraints{ make in
@@ -162,6 +167,23 @@ class ViewController: UIViewController {
             make.right.equalTo(searchBar.snp.left).inset(-5)
             
         }
+        
+        //금주 스팟 스크롤 뷰
+        weeekendphotoScrollView.snp.makeConstraints{ make in
+            make.height.equalTo(self.view).multipliedBy(0.19)
+        }
+        
+        weeekendphotoScrollView.snp.makeConstraints{ make in
+            make.height.equalTo(self.view).multipliedBy(0.19)
+        }
+        weekendPayScrollView.snp.makeConstraints{ make in
+            make.height.equalTo(self.view).multipliedBy(0.19)
+        }
+        weekendDirectorView.snp.makeConstraints{ make in
+            make.height.equalTo(self.view).multipliedBy(0.28)
+        }
+        
+        
         SpotStack.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }

@@ -75,15 +75,16 @@ class ViewController: UIViewController {
         
         //main
         view.addSubview(mainViewPage)
+        //상단 뷰의 생성
         view.addSubview(topToolbar)
         view.addSubview(searchBar)
         view.addSubview(addContentBtn)
         addContentBtn.backgroundColor = .blue
         addContentBtn.layer.cornerRadius = 15
-        //스크롤 뷰들
         
+        //스크롤 뷰들
         self.mainViewPage.addArrangedSubview(weeekendSpotScrollView)
-        weeekendSpotScrollView.backgroundColor = .systemPink
+        weeekendSpotScrollView.backgroundColor = .white
         weeekendSpotScrollView.addSubview(SpotStack)
         //SpotStack.addArrangedSubview(iconView)
         
@@ -116,12 +117,12 @@ class ViewController: UIViewController {
             SpotStack.addArrangedSubview(iconView)
         }
         
-        self.SpotStack.addArrangedSubview(weeekendphotoScrollView)
-        weeekendphotoScrollView.backgroundColor = .green
+        self.mainViewPage.addArrangedSubview(weeekendphotoScrollView)
+        weeekendphotoScrollView.backgroundColor = .gray
         self.mainViewPage.addArrangedSubview(weekendPayScrollView)
-        weekendPayScrollView.backgroundColor = .magenta
+        weekendPayScrollView.backgroundColor = .lightGray
         self.mainViewPage.addArrangedSubview(weekendDirectorView)
-        weekendPayScrollView.backgroundColor = .cyan
+        weekendDirectorView.backgroundColor = .darkGray
         
         //view.addSubview(weekendSpotImageLabel)
         //스크롤뷰에 따를 이미지
@@ -141,12 +142,13 @@ class ViewController: UIViewController {
             make.left.right.bottom.equalTo(self.view.safeAreaLayoutGuide)
             make.top.equalTo(topToolbar.snp.bottom).inset(5)
         }
+        
+        //상단 뷰
         topToolbar.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.right.left.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(45)
         }
-        //상단 뷰
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide)
             make.size.height.equalTo(40)
@@ -166,21 +168,6 @@ class ViewController: UIViewController {
         
         
         //스크롤뷰
-        mainViewPage.snp.makeConstraints{ make in
-            
-        }
-        
-        
-        mainViewPage.snp.makeConstraints{ make in
-            
-        }
-        mainViewPage.snp.makeConstraints{ make in
-            
-        }
-        mainViewPage.snp.makeConstraints{ make in
-            
-        }
-        
     }
 }
 

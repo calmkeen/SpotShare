@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
-    
-    
     // 상단 부분
     let searchBar = UISearchBar()
     let addContentBtn = UIButton()
@@ -34,18 +32,23 @@ class ViewController: UIViewController {
     
     
     //금주 스팟 뷰
-    let iconView = UIView()
+    
     let weeekendSpotScrollView: UIScrollView = {
         let SpotScroll = UIScrollView()
         SpotScroll.backgroundColor = .white
+        SpotScroll.contentMode = .scaleAspectFill
         return SpotScroll
     }()
 
     let SpotStack: UIStackView = {
         let SpotStack = UIStackView()
+        SpotStack.translatesAutoresizingMaskIntoConstraints = false
         SpotStack.axis = .horizontal
         SpotStack.distribution = .equalSpacing
-        SpotStack.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        SpotStack.alignment = .fill
+        SpotStack.distribution = .fillEqually
+        SpotStack.spacing = 20
+        //SpotStack.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         return SpotStack
     }()
     
@@ -74,10 +77,28 @@ class ViewController: UIViewController {
     let weekendDirectorImageLabel = UILabel()
     
     //하단 뷰 이동 툴바
-    let searchViewTransformBtn = UIButton()
-    let ContentViewTranfsformBtn = UIButton()
-    let albumViewTransformBtn = UIButton()
-    let SettingViewTransformBtn = UIButton()
+    let searchViewTransformBtn: UIButton = {
+       let searchBtn = UIButton()
+        searchBtn.setImage(UIImage(named: "도라에몽"), for: .normal)
+        return searchBtn
+    }()
+    let ContentViewTranfsformBtn: UIButton = {
+        let ContentBtn = UIButton()
+        ContentBtn.setImage(UIImage(named: "주술회전"), for: .normal)
+         return ContentBtn
+    }()
+    let albumViewTransformBtn: UIButton = {
+        var albumBtn = UIButton()
+        albumBtn.frame = CGRect(x: 0, y: 0 , width: 10, height: 10)
+        albumBtn.setImage(UIImage(named: "원피스"), for: .normal)
+        albumBtn.imageView?.contentMode = .scaleAspectFit
+         return albumBtn
+    }()
+    let SettingViewTransformBtn: UIButton = {
+        let settingBtn = UIButton()
+        settingBtn.setImage(UIImage(named: "귀멸의 칼날"), for: .normal)
+         return settingBtn
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,32 +119,7 @@ class ViewController: UIViewController {
         self.mainViewPage.addArrangedSubview(weeekendSpotScrollView)
         weeekendSpotScrollView.backgroundColor = .white
         
-        for count in 0..<3 {
-            let weekendSpotImageList: UIImageView = {
-                let SpotImageList = UIImageView()
-                SpotImageList.image = UIImage(named: "짱구")
-                SpotImageList.contentMode = .scaleAspectFit
-                return SpotImageList
-            }()
-            iconView.addSubview(weekendSpotImageList)
-            weekendSpotImageList.snp.makeConstraints{ make in
-                //make.centerX.equalTo(view.safeAreaLayoutGuide)
-            }
-            //label
-            let weekendSpotImageLabel:UILabel = {
-                let SpotLabel = UILabel()
-                SpotLabel.text = "금주의 스팟!\(count+1)"
-                return SpotLabel
-            }()
-            iconView.addSubview(weekendSpotImageLabel)
-            weekendSpotImageLabel.snp.makeConstraints{ label in
-                //label.top.equalTo(weeekendSpotScrollView.snp.bottom).inset(15)
-                //label.left.equalTo(view.safeAreaLayoutGuide).inset(15)
-            }
-            
-            SpotStack.addArrangedSubview(iconView)
-        }
-        weeekendSpotScrollView.addSubview(SpotStack)
+        
         
         self.mainViewPage.addArrangedSubview(weeekendphotoScrollView)
         self.mainViewPage.addArrangedSubview(weekendPayScrollView)
@@ -135,11 +131,11 @@ class ViewController: UIViewController {
         //        view.addSubview(weekendphotoImageList)
         //        view.addSubview(weekendPayImageList)
         //        view.addSubview(weekendDirectorImageList)
-        //        //하단 툴바 뷰
-        //        view.addSubview(searchViewTransformBtn)
-        //        view.addSubview(ContentViewTranfsformBtn)
-        //        view.addSubview(albumViewTransformBtn)
-        //        view.addSubview(SettingViewTransformBtn)
+                //하단 툴바 뷰
+                view.addSubview(searchViewTransformBtn)
+                view.addSubview(ContentViewTranfsformBtn)
+                view.addSubview(albumViewTransformBtn)
+                view.addSubview(SettingViewTransformBtn)
         
         
         //mainview
@@ -165,8 +161,50 @@ class ViewController: UIViewController {
             make.size.width.height.equalTo(35)
             make.left.equalTo(view.safeAreaLayoutGuide).inset(5)
             make.right.equalTo(searchBar.snp.left).inset(-5)
-            
         }
+        
+        for count in 0..<5 {
+            let weekendSpotImageList: UIImageView = {
+                let SpotImageList = UIImageView()
+                SpotImageList.image = UIImage(named: "짱구")
+                SpotImageList.contentMode = .scaleAspectFit
+                return SpotImageList
+            }()
+            //label
+            let weekendSpotImageLabel:UILabel = {
+                let SpotLabel = UILabel()
+                SpotLabel.text = "금주의 스팟!\(count+1)"
+                return SpotLabel
+            }()
+            let iconView: UIView = {
+                let dataStack = UIView()
+                dataStack.contentMode = .scaleAspectFill
+                return dataStack
+            }()
+            iconView.snp.makeConstraints{ make in
+                iconView.addSubview(weekendSpotImageList)
+                iconView.addSubview(weekendSpotImageLabel)
+                
+                //make.height.width.equalTo(view.safeAreaLayoutGuide)
+
+            }
+            weekendSpotImageList.snp.makeConstraints{ make in
+                make.width.height.equalTo(90)
+                make.left.equalTo(10)
+                make.centerX.equalTo(50)
+                make.top.equalTo(50)
+                //make.top.equalTo(SpotStack.snp.top).inset(5)
+            }
+            weekendSpotImageLabel.snp.makeConstraints{ label in
+                label.bottom.equalTo(5)
+                //label.left.equalTo(view.safeAreaLayoutGuide).inset(15)
+            }
+            
+            SpotStack.addArrangedSubview(iconView)
+            SpotStack.addArrangedSubview(weekendSpotImageList)
+        }
+
+        weeekendSpotScrollView.addSubview(SpotStack)
         
         //금주 스팟 스크롤 뷰
         weeekendphotoScrollView.snp.makeConstraints{ make in
@@ -183,13 +221,27 @@ class ViewController: UIViewController {
             make.height.equalTo(self.view).multipliedBy(0.28)
         }
         
-        
         SpotStack.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }
-        
-        
-        //스크롤뷰
+
+        searchViewTransformBtn.snp.makeConstraints{ make in
+            make.left.equalTo(weekendDirectorView.snp.left).inset(10)
+            make.bottom.equalTo(weekendDirectorView.snp.bottom)
+        }
+        ContentViewTranfsformBtn.snp.makeConstraints{ make in
+            make.left.equalTo(searchViewTransformBtn.snp.right).offset(10)
+            make.bottom.equalTo(weekendDirectorView.snp.bottom)
+        }
+        albumViewTransformBtn.snp.makeConstraints{ make in
+            make.left.equalTo(ContentViewTranfsformBtn.snp.right).offset(10)
+            make.bottom.equalTo(weekendDirectorView.snp.bottom)
+            make.height.width.equalTo(100)
+        }
+        SettingViewTransformBtn.snp.makeConstraints{ make in
+            make.left.equalTo(albumViewTransformBtn.snp.right).offset(10)
+            make.bottom.equalTo(weekendDirectorView.snp.bottom)
+        }
     }
 }
 

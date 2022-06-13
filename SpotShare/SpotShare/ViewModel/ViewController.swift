@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
+    
+    let addView = AddPhotoSpotView()
+    
     // 상단 부분
     let searchBar = UISearchBar()
     let addContentBtn = UIButton()
@@ -114,6 +117,7 @@ class ViewController: UIViewController {
         view.addSubview(addContentBtn)
         addContentBtn.backgroundColor = .blue
         addContentBtn.layer.cornerRadius = 15
+        addContentBtn.addTarget(self, action: #selector(addBtnClick), for: .touchUpInside)
         
         //스크롤 뷰들
         self.mainViewPage.addArrangedSubview(weeekendSpotScrollView)
@@ -243,4 +247,12 @@ class ViewController: UIViewController {
             make.bottom.equalTo(weekendDirectorView.snp.bottom)
         }
     }
+    @objc func addBtnClick(){
+        let vc = AddPhotoSpotView()
+        let nav = UINavigationController(rootViewController: vc)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+       
+    }
+
 }

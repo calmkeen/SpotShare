@@ -246,13 +246,17 @@ class ViewController: UIViewController {
             make.left.equalTo(albumViewTransformBtn.snp.right).offset(10)
             make.bottom.equalTo(weekendDirectorView.snp.bottom)
         }
+        
     }
     @objc func addBtnClick(){
-        let vc = AddPhotoSpotView()
-        let nav = UINavigationController(rootViewController: vc)
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true)
-       
+//        let vc = ViewController()
+//        let vc1 = AddPhotoSpotView()
+//        let nav = UINavigationController(rootViewController: vc)
+//                nav.modalPresentationStyle = .fullScreen
+//                self.present(nav, animated: true)
+        let vc = addView
+           self.navigationController?.pushViewController(vc, animated: true)
+        vc.addViewSetup()
     }
 
 }

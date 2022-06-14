@@ -211,7 +211,7 @@
     <resources>
         <image name="photo.on.rectangle.angled" catalog="system" width="128" height="100"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
-        <image name="귀멸의 칼날" width="300" height="168"/>
+        <image name="귀멸의 칼날" width="100" height="56"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

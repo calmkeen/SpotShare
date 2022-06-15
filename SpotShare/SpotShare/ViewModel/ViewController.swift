@@ -105,7 +105,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupView()
+        
     }
     func setupView(){
         
@@ -249,13 +251,9 @@ class ViewController: UIViewController {
         
     }
     @objc func addBtnClick(){
-//        let vc = ViewController()
-//        let vc1 = AddPhotoSpotView()
-//        let nav = UINavigationController(rootViewController: vc)
-//                nav.modalPresentationStyle = .fullScreen
-//                self.present(nav, animated: true)
         let vc = addView
            self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         vc.addViewSetup()
     }
 

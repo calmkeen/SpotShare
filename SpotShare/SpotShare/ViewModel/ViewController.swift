@@ -51,17 +51,26 @@ class ViewController: UIViewController {
         SpotStack.alignment = .fill
         SpotStack.distribution = .fillEqually
         SpotStack.spacing = 20
-        //SpotStack.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         return SpotStack
     }()
-    
     let weeekendphotoScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
+        scrollView.contentMode = .scaleAspectFill
        return scrollView
     }()
-    let weekendphotoImageList = UIImageView()
-    let weekendPhotoImageLabel = UILabel()
+    let photoStack: UIStackView = {
+        let photoStack = UIStackView()
+        photoStack.translatesAutoresizingMaskIntoConstraints = false
+        photoStack.axis = .horizontal
+        photoStack.distribution = .equalSpacing
+        photoStack.alignment = .fill
+        photoStack.distribution = .fillEqually
+        photoStack.spacing = 20
+        return photoStack
+    }()
+//    let weekendphotoImageList = UIImageView()
+//    let weekendPhotoImageLabel = UILabel()
     
     let weekendPayScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -123,10 +132,6 @@ class ViewController: UIViewController {
         
         //스크롤 뷰들
         self.mainViewPage.addArrangedSubview(weeekendSpotScrollView)
-        weeekendSpotScrollView.backgroundColor = .white
-        
-        
-        
         self.mainViewPage.addArrangedSubview(weeekendphotoScrollView)
         self.mainViewPage.addArrangedSubview(weekendPayScrollView)
         self.mainViewPage.addArrangedSubview(weekendDirectorView)
@@ -143,6 +148,9 @@ class ViewController: UIViewController {
                 view.addSubview(albumViewTransformBtn)
                 view.addSubview(SettingViewTransformBtn)
         
+        
+        weeekendSpotScrollView.addSubview(SpotStack)
+        weeekendphotoScrollView.addSubview(photoStack)
         
         //mainview
         mainViewPage.snp.makeConstraints{ make in
@@ -176,7 +184,6 @@ class ViewController: UIViewController {
                 SpotImageList.contentMode = .scaleAspectFit
                 return SpotImageList
             }()
-            //label
             let weekendSpotImageLabel:UILabel = {
                 let SpotLabel = UILabel()
                 SpotLabel.text = "금주의 스팟!\(count+1)"
@@ -184,36 +191,78 @@ class ViewController: UIViewController {
             }()
             let iconView: UIView = {
                 let dataStack = UIView()
-                dataStack.contentMode = .scaleAspectFill
+                //dataStack.contentMode = .scaleAspectFill
                 return dataStack
             }()
+            
+            //여기 의심되네
             iconView.snp.makeConstraints{ make in
                 iconView.addSubview(weekendSpotImageList)
                 iconView.addSubview(weekendSpotImageLabel)
-                
-                //make.height.width.equalTo(view.safeAreaLayoutGuide)
-
             }
             weekendSpotImageList.snp.makeConstraints{ make in
                 make.width.height.equalTo(90)
                 make.left.equalTo(10)
                 make.centerX.equalTo(50)
-                make.top.equalTo(50)
+                make.top.equalTo(20)
                 //make.top.equalTo(SpotStack.snp.top).inset(5)
             }
             weekendSpotImageLabel.snp.makeConstraints{ label in
-                label.bottom.equalTo(5)
-                //label.left.equalTo(view.safeAreaLayoutGuide).inset(15)
+                label.top.equalTo(weekendSpotImageList.snp.bottom).offset(20)
             }
-            
             SpotStack.addArrangedSubview(iconView)
             SpotStack.addArrangedSubview(weekendSpotImageList)
+            //SpotStack.addArrangedSubview(weekendSpotImageLabel)
+        }
+        for count in 0..<7{
+            let photocell: UIView = {
+                let cell = UIView()
+                return cell
+            }()
+            let weekendphotoImageList: UIImageView = {
+                let image = UIImageView()
+                image.image = UIImage(named: "도라에몽")
+                image.contentMode = .scaleAspectFit
+                return image
+            }()
+            let weekendPhotoImageLabel: UILabel = {
+                let label = UILabel()
+                label.text = "금주의 사진!\(count+1)"
+                return label
+            }()
+            let titlePhoto: UILabel = {
+                let label = UILabel()
+                label.text = "이벤주 베스트"
+                return label
+            }()
+            photocell.addSubview(weekendphotoImageList)
+            photocell.addSubview(weekendPhotoImageLabel)
+            photocell.snp.makeConstraints{ make in
+            }
+            weekendphotoImageList.snp.makeConstraints{ make in
+                make.width.height.equalTo(50)
+                make.left.equalTo(10)
+                make.centerX.equalTo(50)
+                make.top.equalTo(20)
+            }
+            weekendPhotoImageLabel.snp.makeConstraints{ label in
+                label.top.equalTo(weekendphotoImageList.snp.bottom).offset(20)
+            }
+
+            photoStack.addArrangedSubview(weekendphotoImageList)
+            photoStack.addArrangedSubview(photocell)
+            
+            
+            //photoStack.addArrangedSubview(weekendPhotoImageLabel)
+            
+            
+            
         }
 
-        weeekendSpotScrollView.addSubview(SpotStack)
+        
         
         //금주 스팟 스크롤 뷰
-        weeekendphotoScrollView.snp.makeConstraints{ make in
+        weeekendSpotScrollView.snp.makeConstraints{ make in
             make.height.equalTo(self.view).multipliedBy(0.19)
         }
         
@@ -230,6 +279,10 @@ class ViewController: UIViewController {
         SpotStack.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }
+        photoStack.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
+        
 
         searchViewTransformBtn.snp.makeConstraints{ make in
             make.left.equalTo(weekendDirectorView.snp.left).inset(10)

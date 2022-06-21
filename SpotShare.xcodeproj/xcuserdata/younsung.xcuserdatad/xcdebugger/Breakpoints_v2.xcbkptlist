@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "319E32E9-37BA-44F8-92EB-0B5EA0FF4D81"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0ACABBFF-08F2-4226-AE67-B9586B35F797"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpotShare/ViewModel/LocationVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "LocationViewModel"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "73E10D93-AEC8-46D6-8F7E-C7BA03E9FE97"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpotShare/ViewModel/CameraVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "73E10D93-AEC8-46D6-8F7E-C7BA03E9FE97 - 84ea8752e63af3ec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpotShare.CameraModalVM.testBtn.getter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "SpotShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/younsung/development/SpotShare/SpotShare/ViewModel/CameraVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "73E10D93-AEC8-46D6-8F7E-C7BA03E9FE97 - 925a15c9657b0078"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpotShare.CameraModalVM.testBtn.setter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "SpotShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/younsung/development/SpotShare/SpotShare/ViewModel/CameraVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "73E10D93-AEC8-46D6-8F7E-C7BA03E9FE97 - e75ece79593d9609"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpotShare.CameraModalVM.testBtn.modify : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "SpotShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/younsung/development/SpotShare/SpotShare/ViewModel/CameraVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "73E10D93-AEC8-46D6-8F7E-C7BA03E9FE97 - dbae4d729e64beb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpotShare.CameraModalVM.testBtn.modify : Swift.Optional&lt;__C.UIButton&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "SpotShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/younsung/development/SpotShare/SpotShare/ViewModel/CameraVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "73E10D93-AEC8-46D6-8F7E-C7BA03E9FE97 - 6fceecc2e257c400"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpotShare.CameraModalVM.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; SpotShare.CameraModalVM"
+                  moduleName = "SpotShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/younsung/development/SpotShare/SpotShare/ViewModel/CameraVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "73E10D93-AEC8-46D6-8F7E-C7BA03E9FE97 - bb86e4c995d9385a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpotShare.CameraModalVM.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;SpotShare.CameraModalVM&gt;"
+                  moduleName = "SpotShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/younsung/development/SpotShare/SpotShare/ViewModel/CameraVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

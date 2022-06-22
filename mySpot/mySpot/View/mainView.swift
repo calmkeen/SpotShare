@@ -40,7 +40,7 @@ class MainView:UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.requestWhenInUseAuthorization()
+        
         locationManager.delegate = self
         mapView.map.delegate = self
         mapView.map.setRegion(MKCoordinateRegion(center: startCoordinate, span: MKCoordinateSpan(latitudeDelta: 37.5, longitudeDelta: 127.04)), animated: true)
@@ -49,8 +49,10 @@ class MainView:UIViewController{
         make()
         addBtn.addTarget(self, action: #selector(addBtnClick), for: .touchUpInside)
         listBtn.addTarget(self, action: #selector(listBtnClick), for: .touchUpInside)
+        buttonActions()
         //self.navigationController?.navigationBar.isHidden = true;
     }
+    
     override func loadView() {
         super.loadView()
         
@@ -71,94 +73,94 @@ class MainView:UIViewController{
 extension MainView: MKMapViewDelegate,CLLocationManagerDelegate{
     
     @objc func findSesacLocation() {
-            
-            mapView.map.showsUserLocation = false
-            
-            mapView.map.userTrackingMode = .none
-            
-            mapView.map.setRegion(MKCoordinateRegion(center: startCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.11)), animated: true)
-        }
+        
+        mapView.map.showsUserLocation = false
+        
+        mapView.map.userTrackingMode = .none
+        
+        mapView.map.setRegion(MKCoordinateRegion(center: startCoordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.11)), animated: true)
+    }
     
     @objc func findMyLocation() {
-            
-            guard let currentLocation = locationManager.location else {
-                checkUserLocationServicesAuthorization()
-                return
-            }
-            
-            mapView.map.showsUserLocation = true
-            
-            mapView.map.setUserTrackingMode(.follow, animated: true)
-        }
-    
-    func goSetting() {
-            
-            let alert = UIAlertController(title: "위치권한 요청", message: "러닝 거리 기록을 위해 항상 위치 권한이 필요합니다.", preferredStyle: .alert)
-            let settingAction = UIAlertAction(title: "설정", style: .default) { action in
-                guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-                // 열 수 있는 url 이라면, 이동
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url)
-                }
-            }
-            let cancelAction = UIAlertAction(title: "취소", style: .cancel) { UIAlertAction in
-                
-            }
-            
-            alert.addAction(settingAction)
-            alert.addAction(cancelAction)
-            
-            present(alert, animated: true, completion: nil)
+        
+        guard let currentLocation = locationManager.location else {
+            checkUserLocationServicesAuthorization()
+            return
         }
         
-        func checkUserLocationServicesAuthorization() {
-            let authorizationStatus: CLAuthorizationStatus
-            if #available(iOS 14, *) {
-                authorizationStatus = locationManager.authorizationStatus
-            } else {
-                authorizationStatus = CLLocationManager.authorizationStatus()
-            }
-            
-            if CLLocationManager.locationServicesEnabled() {
-                checkCurrentLocationAuthorization(authorizationStatus: authorizationStatus)
+        mapView.map.showsUserLocation = true
+        
+        mapView.map.setUserTrackingMode(.follow, animated: true)
+    }
+    
+    func goSetting() {
+        
+        let alert = UIAlertController(title: "위치권한 요청", message: "러닝 거리 기록을 위해 항상 위치 권한이 필요합니다.", preferredStyle: .alert)
+        let settingAction = UIAlertAction(title: "설정", style: .default) { action in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            // 열 수 있는 url 이라면, 이동
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
             }
         }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { UIAlertAction in
+            
+        }
+        
+        alert.addAction(settingAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func checkUserLocationServicesAuthorization() {
+        let authorizationStatus: CLAuthorizationStatus
+        if #available(iOS 14, *) {
+            authorizationStatus = locationManager.authorizationStatus
+        } else {
+            authorizationStatus = CLLocationManager.authorizationStatus()
+        }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            checkCurrentLocationAuthorization(authorizationStatus: authorizationStatus)
+        }
+    }
     
     func checkCurrentLocationAuthorization(authorizationStatus: CLAuthorizationStatus) {
-            switch authorizationStatus {
-            case .notDetermined:
-                locationManager.requestWhenInUseAuthorization()
-                locationManager.startUpdatingLocation()
-            case .restricted:
-                print("restricted")
-                goSetting()
-            case .denied:
-                print("denided")
-                goSetting()
-            case .authorizedAlways:
-                print("always")
-            case .authorizedWhenInUse:
-                print("wheninuse")
-                locationManager.startUpdatingLocation()
+        switch authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        case .restricted:
+            print("restricted")
+            goSetting()
+        case .denied:
+            print("denided")
+            goSetting()
+        case .authorizedAlways:
+            print("always")
+        case .authorizedWhenInUse:
+            print("wheninuse")
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            print("unknown")
+        }
+        if #available(iOS 14.0, *) {
+            let accuracyState = locationManager.accuracyAuthorization
+            switch accuracyState {
+            case .fullAccuracy:
+                print("full")
+            case .reducedAccuracy:
+                print("reduced")
             @unknown default:
-                print("unknown")
-            }
-            if #available(iOS 14.0, *) {
-                let accuracyState = locationManager.accuracyAuthorization
-                switch accuracyState {
-                case .fullAccuracy:
-                    print("full")
-                case .reducedAccuracy:
-                    print("reduced")
-                @unknown default:
-                    print("Unknown")
-                }
+                print("Unknown")
             }
         }
+    }
     func buttonActions() {
-//            mapView.myLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
-//            mapView.sesacLocationButton.addTarget(self, action: #selector(findSesacLocation), for: .touchUpInside)
-        }
+                    mapView.myLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
+                    mapView.sesacLocationButton.addTarget(self, action: #selector(findSesacLocation), for: .touchUpInside)
+    }
     func setMainView(){
         view.addSubview(mainView)
         view.backgroundColor = .white
@@ -197,6 +199,10 @@ extension MainView: MKMapViewDelegate,CLLocationManagerDelegate{
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         print("moving to listView")
         
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print(#function)
+        checkUserLocationServicesAuthorization()
     }
     
 }

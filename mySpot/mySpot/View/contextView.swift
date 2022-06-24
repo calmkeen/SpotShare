@@ -10,5 +10,6 @@ import UIKit
 import SnapKit
 
 class ContextView: UIViewController{
+    // 컨테츠를 디테일 하게 보는 뷰
     
 }

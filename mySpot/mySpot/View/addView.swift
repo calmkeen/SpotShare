@@ -16,12 +16,23 @@ class AddView: UIViewController{
         view.backgroundColor = .gray
         return view
     }()
-    
-    let label: UILabel = {
+    let addlabel: UILabel = {
         let label = UILabel()
         label.text = "addView"
         return label
     }()
+    let imageAdd = UIImage()
+    let nameLabel = UILabel()
+    let tagLabel = UILabel()
+    let selectType = UILabel()
+    
+    let nameText = UITextField()
+    let tagText = UITextField()
+    
+    let selectBtn = UIButton()
+    let addBtn = UIButton()
+    let cancelBtn = UIButton()
+    
     
     override func viewDidLoad() {
         
@@ -34,13 +45,13 @@ class AddView: UIViewController{
     
     func View(){
         view.addSubview(addViewStack)
-        addViewStack.addSubview(label)
+        addViewStack.addSubview(addlabel)
     }
     func Make(){
         addViewStack.snp.makeConstraints{make in
             make.edges.equalTo(view.self.safeAreaLayoutGuide)
         }
-        label.snp.makeConstraints{ make in
+        addlabel.snp.makeConstraints{ make in
             make.top.equalTo(100)
         }
     }

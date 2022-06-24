@@ -16,7 +16,7 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
     
     let listView = ListCateView()
     let addView = AddView()
-    let sesacLocationButton = UIButton()
+    let editLocationBtn = UIButton()
     let myLocationButton = UIButton()
     
     let mapView = MapView()
@@ -33,7 +33,7 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
         
         locationManager.delegate = self
         mapView.map.delegate = self
-        mapView.map.setRegion(MKCoordinateRegion(center: startCoordinate, span: MKCoordinateSpan(latitudeDelta: 37.5, longitudeDelta: 127.04)), animated: true)
+        mapView.map.setRegion(MKCoordinateRegion(center: startCoordinate, span: MKCoordinateSpan(latitudeDelta: 38.439801, longitudeDelta: 127.127730)), animated: true)
         locationManager.requestWhenInUseAuthorization()
         setMainView()
         make()
@@ -63,10 +63,10 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
         myLocationButton.setTitleColor(.yellow, for: .normal)
         myLocationButton.layer.cornerRadius = 15
         
-        sesacLocationButton.setTitle("새싹 캠퍼스 가기", for: .normal)
-        sesacLocationButton.backgroundColor = .darkGray
-        sesacLocationButton.setTitleColor(.yellow, for: .normal)
-        sesacLocationButton.layer.cornerRadius = 15
+        editLocationBtn.setTitle("새싹 캠퍼스 가기", for: .normal)
+        editLocationBtn.backgroundColor = .darkGray
+        editLocationBtn.setTitleColor(.yellow, for: .normal)
+        editLocationBtn.layer.cornerRadius = 15
         
     }
     
@@ -148,7 +148,7 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
         mainView.addSubview(addBtn)
         mainView.addSubview(listBtn)
         mainView.addSubview(myLocationButton)
-        mainView.addSubview(sesacLocationButton)
+        mainView.addSubview(editLocationBtn)
     }
     
     func make(){
@@ -166,7 +166,7 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
             make.bottom.equalTo(addBtn.snp.top).offset(-20)
             
         }
-        sesacLocationButton.snp.makeConstraints { make in
+        editLocationBtn.snp.makeConstraints { make in
             make.bottom.equalTo(myLocationButton.snp.top).offset(-20)
             make.right.equalTo(self.view.safeAreaLayoutGuide).inset(30)
         }
@@ -222,7 +222,7 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
     }
     func buttonActions() {
         myLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
-        sesacLocationButton.addTarget(self, action: #selector(findSesacLocation), for: .touchUpInside)
+        editLocationBtn.addTarget(self, action: #selector(findSesacLocation), for: .touchUpInside)
         addBtn.addTarget(self, action: #selector(addBtnClick), for: .touchUpInside)
         listBtn.addTarget(self, action: #selector(listBtnClick), for: .touchUpInside)
     }

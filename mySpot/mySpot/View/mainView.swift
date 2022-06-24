@@ -12,7 +12,7 @@ import UIKit
 import CoreLocation
 
 
-class MainView:UIViewController{
+class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
     
     let listView = ListCateView()
     let addView = AddView()
@@ -21,22 +21,10 @@ class MainView:UIViewController{
     let startCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
     let locationManager = CLLocationManager()
     
-    let mainView: UIView = {
-        let main = UIView()
-        main.backgroundColor = .gray
-        return main
-    }()
-    let addBtn: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-        return button
-    }()
-    let listBtn: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "list.dash"), for: .normal)
-        return button
-    }()
-    
+    override func loadView() {
+        super.loadView()
+        view = mapView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,10 +41,21 @@ class MainView:UIViewController{
         //self.navigationController?.navigationBar.isHidden = true;
     }
     
-    override func loadView() {
-        super.loadView()
-        
-    }
+    let mainView: UIView = {
+        let main = UIView()
+        return main
+    }()
+    let addBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        return button
+    }()
+    let listBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "list.dash"), for: .normal)
+        return button
+    }()
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -67,10 +66,14 @@ class MainView:UIViewController{
         pin.subtitle = "3층짜리 건물"
         mapView.map.addAnnotation(pin)
     }
-}
-
-
-extension MainView: MKMapViewDelegate,CLLocationManagerDelegate{
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            // 유저 위치를 나타낼때는 기본 파란 그 점 아시죠? 그거 쓰고싶으니까~ 요렇게 해주시고 만약에 쓰고싶은 어노테이션이 있다면 그녀석을 리턴해 주시면 되긋죠? 하하!
+            return nil
+        }
+        return nil
+    }
     
     @objc func findSesacLocation() {
         
@@ -91,39 +94,6 @@ extension MainView: MKMapViewDelegate,CLLocationManagerDelegate{
         mapView.map.showsUserLocation = true
         
         mapView.map.setUserTrackingMode(.follow, animated: true)
-    }
-    
-    func goSetting() {
-        
-        let alert = UIAlertController(title: "위치권한 요청", message: "러닝 거리 기록을 위해 항상 위치 권한이 필요합니다.", preferredStyle: .alert)
-        let settingAction = UIAlertAction(title: "설정", style: .default) { action in
-            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-            // 열 수 있는 url 이라면, 이동
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
-            }
-        }
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { UIAlertAction in
-            
-        }
-        
-        alert.addAction(settingAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func checkUserLocationServicesAuthorization() {
-        let authorizationStatus: CLAuthorizationStatus
-        if #available(iOS 14, *) {
-            authorizationStatus = locationManager.authorizationStatus
-        } else {
-            authorizationStatus = CLLocationManager.authorizationStatus()
-        }
-        
-        if CLLocationManager.locationServicesEnabled() {
-            checkCurrentLocationAuthorization(authorizationStatus: authorizationStatus)
-        }
     }
     
     func checkCurrentLocationAuthorization(authorizationStatus: CLAuthorizationStatus) {
@@ -157,22 +127,11 @@ extension MainView: MKMapViewDelegate,CLLocationManagerDelegate{
             }
         }
     }
-    func buttonActions() {
-                    mapView.myLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
-                    mapView.sesacLocationButton.addTarget(self, action: #selector(findSesacLocation), for: .touchUpInside)
-    }
     func setMainView(){
         view.addSubview(mainView)
         view.backgroundColor = .white
         mainView.addSubview(addBtn)
         mainView.addSubview(listBtn)
-    }
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !annotation.isKind(of: MKUserLocation.self) else {
-            // 유저 위치를 나타낼때는 기본 파란 그 점 아시죠? 그거 쓰고싶으니까~ 요렇게 해주시고 만약에 쓰고싶은 어노테이션이 있다면 그녀석을 리턴해 주시면 되긋죠? 하하!
-            return nil
-        }
-        return nil
     }
     
     func make(){
@@ -198,11 +157,48 @@ extension MainView: MKMapViewDelegate,CLLocationManagerDelegate{
         self.navigationController?.pushViewController(vc, animated: true)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         print("moving to listView")
+
+    }
+    func goSetting() {
         
+        let alert = UIAlertController(title: "위치권한 요청", message: "러닝 거리 기록을 위해 항상 위치 권한이 필요합니다.", preferredStyle: .alert)
+        let settingAction = UIAlertAction(title: "설정", style: .default) { action in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            // 열 수 있는 url 이라면, 이동
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { UIAlertAction in
+            
+        }
+        
+        alert.addAction(settingAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func checkUserLocationServicesAuthorization() {
+        let authorizationStatus: CLAuthorizationStatus
+        if #available(iOS 14, *) {
+            authorizationStatus = locationManager.authorizationStatus
+        } else {
+            authorizationStatus = CLLocationManager.authorizationStatus()
+        }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            checkCurrentLocationAuthorization(authorizationStatus: authorizationStatus)
+        }
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print(#function)
         checkUserLocationServicesAuthorization()
     }
-    
+    func buttonActions() {
+        mapView.myLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
+        mapView.sesacLocationButton.addTarget(self, action: #selector(findSesacLocation), for: .touchUpInside)
+    }
 }
+
+

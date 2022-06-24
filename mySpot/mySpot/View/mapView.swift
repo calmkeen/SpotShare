@@ -27,6 +27,7 @@ class MapView: UIView{
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
     func configure(){
         myLocationButton.setTitle("내 위치로 가기", for: .normal)
                myLocationButton.backgroundColor = .darkGray

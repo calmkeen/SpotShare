@@ -16,6 +16,8 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
     
     let listView = ListCateView()
     let addView = AddView()
+    let sesacLocationButton = UIButton()
+    let myLocationButton = UIButton()
     
     let mapView = MapView()
     let startCoordinate = CLLocationCoordinate2D(latitude: 37.51818789942772, longitude: 126.88541765534976)
@@ -23,7 +25,7 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
     
     override func loadView() {
         super.loadView()
-        view = mapView
+        mainView = mapView
     }
     
     override func viewDidLoad() {
@@ -35,13 +37,12 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
         locationManager.requestWhenInUseAuthorization()
         setMainView()
         make()
-        addBtn.addTarget(self, action: #selector(addBtnClick), for: .touchUpInside)
-        listBtn.addTarget(self, action: #selector(listBtnClick), for: .touchUpInside)
+        configure()
         buttonActions()
         //self.navigationController?.navigationBar.isHidden = true;
     }
     
-    let mainView: UIView = {
+    var mainView: UIView = {
         let main = UIView()
         return main
     }()
@@ -55,6 +56,19 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
         button.setImage(UIImage(systemName: "list.dash"), for: .normal)
         return button
     }()
+    
+    func configure(){
+        myLocationButton.setTitle("내 위치로 가기", for: .normal)
+        myLocationButton.backgroundColor = .darkGray
+        myLocationButton.setTitleColor(.yellow, for: .normal)
+        myLocationButton.layer.cornerRadius = 15
+        
+        sesacLocationButton.setTitle("새싹 캠퍼스 가기", for: .normal)
+        sesacLocationButton.backgroundColor = .darkGray
+        sesacLocationButton.setTitleColor(.yellow, for: .normal)
+        sesacLocationButton.layer.cornerRadius = 15
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -127,23 +141,34 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
             }
         }
     }
+    
     func setMainView(){
-        view.addSubview(mainView)
+        view.addSubview(mapView)
         view.backgroundColor = .white
         mainView.addSubview(addBtn)
         mainView.addSubview(listBtn)
+        mainView.addSubview(myLocationButton)
+        mainView.addSubview(sesacLocationButton)
     }
     
     func make(){
         mainView.snp.makeConstraints{ make in
-            //make.edges.equalTo(self.view.safeAreaLayoutGuide)
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         addBtn.snp.makeConstraints{ make in
             make.right.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(30)
         }
         listBtn.snp.makeConstraints{ make in
             make.left.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(30)
+        }
+        myLocationButton.snp.makeConstraints { make in
+            make.right.equalTo(self.view.safeAreaLayoutGuide).inset(30)
+            make.bottom.equalTo(addBtn.snp.top).offset(-20)
+            
+        }
+        sesacLocationButton.snp.makeConstraints { make in
+            make.bottom.equalTo(myLocationButton.snp.top).offset(-20)
+            make.right.equalTo(self.view.safeAreaLayoutGuide).inset(30)
         }
         
     }
@@ -157,7 +182,7 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
         self.navigationController?.pushViewController(vc, animated: true)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         print("moving to listView")
-
+        
     }
     func goSetting() {
         
@@ -196,8 +221,10 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
         checkUserLocationServicesAuthorization()
     }
     func buttonActions() {
-        mapView.myLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
-        mapView.sesacLocationButton.addTarget(self, action: #selector(findSesacLocation), for: .touchUpInside)
+        myLocationButton.addTarget(self, action: #selector(findMyLocation), for: .touchUpInside)
+        sesacLocationButton.addTarget(self, action: #selector(findSesacLocation), for: .touchUpInside)
+        addBtn.addTarget(self, action: #selector(addBtnClick), for: .touchUpInside)
+        listBtn.addTarget(self, action: #selector(listBtnClick), for: .touchUpInside)
     }
 }
 

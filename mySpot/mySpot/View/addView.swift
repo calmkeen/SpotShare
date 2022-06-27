@@ -26,8 +26,16 @@ class AddView: UIViewController{
     let tagLabel = UILabel()
     let selectType = UILabel()
     
-    let nameText = UITextField()
-    let tagText = UITextField()
+    let nameText: UITextField = {
+        let text = UITextField()
+        text.text = "이름을 입력하세요"
+        return text
+    }()
+    let tagText: UITextField = {
+        let text = UITextField()
+        text.text = "내용을 입력하세요"
+        return text
+    }()
     
     let selectBtn = UIButton()
     let addBtn = UIButton()

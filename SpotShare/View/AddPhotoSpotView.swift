@@ -32,7 +32,7 @@ class AddPhotoSpotView: UIViewController{
     
     let selectPS: UIButton = {
       let selectBox = UIButton()
-        selectBox.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
+        selectBox 
         return selectBox
     }()
     

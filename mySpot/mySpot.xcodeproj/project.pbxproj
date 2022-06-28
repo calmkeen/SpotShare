@@ -21,6 +21,8 @@
 		75294674285C7066006149CF /* listView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75294673285C7066006149CF /* listView.swift */; };
 		75294676285C7083006149CF /* launchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75294675285C7083006149CF /* launchScreenView.swift */; };
 		75630E5728605BDA009DFAC5 /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75630E5628605BDA009DFAC5 /* mapView.swift */; };
+		75F4B0AD286AD8F30048A990 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4B0AC286AD8F30048A990 /* CellView.swift */; };
+		75F4B0B0286ADD180048A990 /* photoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F4B0AF286ADD180048A990 /* photoModel.swift */; };
 		C7D922DE3ECCE2E03B7588CF /* Pods_mySpot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A34D42553C2B6DB58AADB237 /* Pods_mySpot.framework */; };
 		CEF37792A530802D9272A91E /* Pods_mySpot_mySpotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B759590E1A623969D1E1399B /* Pods_mySpot_mySpotUITests.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +67,8 @@
 		75294673285C7066006149CF /* listView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listView.swift; sourceTree = "<group>"; };
 		75294675285C7083006149CF /* launchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launchScreenView.swift; sourceTree = "<group>"; };
 		75630E5628605BDA009DFAC5 /* mapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapView.swift; sourceTree = "<group>"; };
+		75F4B0AC286AD8F30048A990 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		75F4B0AF286ADD180048A990 /* photoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoModel.swift; sourceTree = "<group>"; };
 		8202C6881A2F743C57E5723C /* Pods-mySpot-mySpotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mySpot-mySpotUITests.debug.xcconfig"; path = "Target Support Files/Pods-mySpot-mySpotUITests/Pods-mySpot-mySpotUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A34D42553C2B6DB58AADB237 /* Pods_mySpot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mySpot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B759590E1A623969D1E1399B /* Pods_mySpot_mySpotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mySpot_mySpotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +128,7 @@
 		7529463B285C6F7A006149CF /* mySpot */ = {
 			isa = PBXGroup;
 			children = (
+				75F4B0AE286ADCFE0048A990 /* Model */,
 				7529466C285C7038006149CF /* View */,
 				7529463C285C6F7A006149CF /* AppDelegate.swift */,
 				7529463E285C6F7A006149CF /* SceneDelegate.swift */,
@@ -160,8 +165,17 @@
 				75294671285C705F006149CF /* contextView.swift */,
 				75294673285C7066006149CF /* listView.swift */,
 				75294675285C7083006149CF /* launchScreenView.swift */,
+				75F4B0AC286AD8F30048A990 /* CellView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		75F4B0AE286ADCFE0048A990 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				75F4B0AF286ADD180048A990 /* photoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8BC69BF57B0FE3D9A3CE3933 /* Pods */ = {
@@ -429,10 +443,12 @@
 				75630E5728605BDA009DFAC5 /* mapView.swift in Sources */,
 				7529463D285C6F7A006149CF /* AppDelegate.swift in Sources */,
 				75294674285C7066006149CF /* listView.swift in Sources */,
+				75F4B0B0286ADD180048A990 /* photoModel.swift in Sources */,
 				75294670285C7057006149CF /* addView.swift in Sources */,
 				75294672285C705F006149CF /* contextView.swift in Sources */,
 				7529463F285C6F7A006149CF /* SceneDelegate.swift in Sources */,
 				75294676285C7083006149CF /* launchScreenView.swift in Sources */,
+				75F4B0AD286AD8F30048A990 /* CellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

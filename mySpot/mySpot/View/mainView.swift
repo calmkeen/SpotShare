@@ -58,12 +58,12 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
     }()
     
     func configure(){
-        myLocationButton.setTitle("내 위치로 가기", for: .normal)
+        myLocationButton.setTitle("홈으로", for: .normal)
         myLocationButton.backgroundColor = .darkGray
         myLocationButton.setTitleColor(.yellow, for: .normal)
         myLocationButton.layer.cornerRadius = 15
         
-        editLocationBtn.setTitle("새싹 캠퍼스 가기", for: .normal)
+        editLocationBtn.setTitle("포인트로", for: .normal)
         editLocationBtn.backgroundColor = .darkGray
         editLocationBtn.setTitleColor(.yellow, for: .normal)
         editLocationBtn.layer.cornerRadius = 15

@@ -11,6 +11,9 @@ import SnapKit
 
 class AddView: UIViewController{
     
+    //let mainview = MainView()
+    let listview = ListCateView()
+    
     let addViewStack: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -92,6 +95,7 @@ class AddView: UIViewController{
         Make()
         print("addView!!")
         configure()
+        buttonAction()
         
     }
     
@@ -113,7 +117,7 @@ class AddView: UIViewController{
         
     }
     func Make(){
-        addViewStack.snp.makeConstraints{make in
+        addViewStack.snp.makeConstraints{ make in
             make.edges.equalTo(view.self.safeAreaLayoutGuide)
         }
         addlabel.snp.makeConstraints{ make in
@@ -160,9 +164,21 @@ class AddView: UIViewController{
             make.top.equalTo(selectType.snp.bottom).offset(5)
             make.right.equalTo(20)
         }
-        
-        
-        
+    }
+    @objc func addBtnClcik(sender: UIButton){
+        let vc =  MainView()
+        navigationController?.pushViewController(vc, animated: true)
+        print("저장되었습니다.")
+
+    }
+//    @objc func cancelBtnClick(sender: UIButton){
+//        let vc = listview
+//        navigationController?.pushViewController(vc, animated: true)
+//        print("취소")
+//    }
+    func buttonAction(){
+        addBtn.addTarget(self, action: #selector(addBtnClcik), for: .touchUpInside)
+//        cancelBtn.addTarget(self, action: #selector(cancelBtnClick), for: .touchUpInside)
     }
 
     

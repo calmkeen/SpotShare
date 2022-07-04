@@ -10,7 +10,7 @@ import SnapKit
 import MapKit
 import UIKit
 import CoreLocation
-
+import FirebaseCore
 
 class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
     
@@ -180,7 +180,7 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
     @objc func listBtnClick(){
         let vc = listView
         self.navigationController?.pushViewController(vc, animated: true)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        //self.navigationController?.setNavigationBarHidden(false, animated: false)
         print("moving to listView")
         
     }

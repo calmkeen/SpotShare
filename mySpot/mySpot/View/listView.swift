@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 class ListCateView: UIViewController{
-    let cellview = cellView()
     
+    let cellview = cellView()
     let cView: UICollectionView = {
         let cView = UICollectionViewFlowLayout()
         cView.scrollDirection = .vertical
@@ -29,7 +29,9 @@ class ListCateView: UIViewController{
         print("listView")
     }
     func configureCollectionView() {
-        cView.register(ListCateView.self, forCellWithReuseIdentifier: "cell")
+        //cView.register(ListCateView.self, forCellWithReuseIdentifier: "cell")
+        //여기를 해야 뷰가 뜸
+        cView.register(cellView.self, forCellWithReuseIdentifier: "cell")
         cView.delegate = self
         cView.dataSource = self
     }

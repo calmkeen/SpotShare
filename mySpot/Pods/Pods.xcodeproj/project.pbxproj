@@ -38,7 +38,6 @@
 		69DE75BA185BBAB5FDAA28321F3C849F /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5BB7E9F99F41E937A7E2CCEF178BE /* ConstraintItem.swift */; };
 		6AC1B881BB319C89AD023A02CDC8FC3D /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04B678C00268C9CF7E410145D6F78AA /* ConstraintLayoutGuide+Extensions.swift */; };
 		6EAC8B6FA2D115DE708A58C601DD25E1 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDF096C3836F945945C9FFDB5090F5 /* Constraint.swift */; };
-		75F4B0CC2872C4D90048A990 /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = 75F4B0CB2872C4D90048A990 /* GoogleService-Info (1).plist */; };
 		81A4757C502C59F496AFB03249FF3D60 /* Pods-mySpot-mySpotUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 17C661DAF910034371F0D03AEFD4C57E /* Pods-mySpot-mySpotUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		901DF0A49DA40A0A24598D9903AF3627 /* Pods-mySpot-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B99087A527CB0D28EC90A062B90269CE /* Pods-mySpot-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95E194A3AABB5407231E898B6686F73E /* ConstraintMakerRelatable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BBF75085D255E27A5F9EF9EC203A5 /* ConstraintMakerRelatable+Extensions.swift */; };
@@ -115,7 +114,6 @@
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		73F9E407BD3F2BD892CA597911E0C6E4 /* Pods-mySpotTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-mySpotTests.modulemap"; sourceTree = "<group>"; };
 		751D5202E1F291CC13F7AE0CD669B831 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Sources/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
-		75F4B0CB2872C4D90048A990 /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info (1).plist"; path = "../GoogleService-Info (1).plist"; sourceTree = "<group>"; };
 		764775726CF065A4BFFE4AB7F9C38F6E /* Pods-mySpot-mySpotUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-mySpot-mySpotUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		775925FEB328DF2532B8FDBB0F7BBC3D /* Pods-mySpot-mySpotUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-mySpot-mySpotUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		782C19B041349DED0C47AC71C798375C /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 		A46FF1D4A214411E388B78308F81CE94 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				75F4B0CB2872C4D90048A990 /* GoogleService-Info (1).plist */,
 				0699F4FC8C6794D071F29BFEB9601A64 /* Pods-mySpot */,
 				136CF53B17C9DFB354511C8D1367B3D1 /* Pods-mySpot-mySpotUITests */,
 				EBD28DADC3899771C1F15CAC76151370 /* Pods-mySpotTests */,
@@ -521,7 +518,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75F4B0CC2872C4D90048A990 /* GoogleService-Info (1).plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

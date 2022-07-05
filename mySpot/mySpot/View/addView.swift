@@ -8,10 +8,18 @@
 import Foundation
 import UIKit
 import SnapKit
+import Firebase
 
 class AddView: UIViewController{
     
-    //let mainview = MainView()
+
+    var ref: DatabaseReference! = Database.database().reference()
+    let photomodel = photomo
+
+    
+//    self.ref = FIRDatabase.database().reference()
+//    let itemRef = self.ref.child("list")
+//    itemRef.setValue(self.todos)
     let listview = ListCateView()
     
     let addViewStack: UIView = {
@@ -166,6 +174,12 @@ class AddView: UIViewController{
         }
     }
     @objc func addBtnClcik(sender: UIButton){
+        let itemRef = ref.child("list/album/tag")
+                //itemRef.setValue(imageAdd)
+                itemRef.setValue(["nameText": nameText])
+                //itemRef.setValue(tagText)
+        
+        
         let vc =  MainView()
         navigationController?.pushViewController(vc, animated: true)
         print("저장되었습니다.")
@@ -177,6 +191,8 @@ class AddView: UIViewController{
 //        print("취소")
 //    }
     func buttonAction(){
+        //self.ref = FIRDatabase.database().reference("https://myspot-e0151-default-rtdb.firebaseio.com/")
+        
         addBtn.addTarget(self, action: #selector(addBtnClcik), for: .touchUpInside)
 //        cancelBtn.addTarget(self, action: #selector(cancelBtnClick), for: .touchUpInside)
     }

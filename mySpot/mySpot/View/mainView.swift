@@ -11,8 +11,11 @@ import MapKit
 import UIKit
 import CoreLocation
 import FirebaseCore
+import Firebase
 
 class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
+    
+    
     
     let listView = ListCateView()
     let addView = AddView()

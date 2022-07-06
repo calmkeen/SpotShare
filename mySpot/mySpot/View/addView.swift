@@ -14,8 +14,7 @@ class AddView: UIViewController{
     
 
     var ref: DatabaseReference! = Database.database().reference()
-    let photomodel = photomo
-
+    //let photomodel = photomo
     
 //    self.ref = FIRDatabase.database().reference()
 //    let itemRef = self.ref.child("list")

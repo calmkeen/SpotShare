@@ -14,9 +14,6 @@ import FirebaseCore
 import Firebase
 
 class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
-    
-    
-    
     let listView = ListCateView()
     let addView = AddView()
     let editLocationBtn = UIButton()
@@ -102,14 +99,12 @@ class MainView:UIViewController,MKMapViewDelegate,CLLocationManagerDelegate{
     }
     
     @objc func findMyLocation() {
-        
         guard let currentLocation = locationManager.location else {
             checkUserLocationServicesAuthorization()
             return
         }
         
         mapView.map.showsUserLocation = true
-        
         mapView.map.setUserTrackingMode(.follow, animated: true)
     }
     

@@ -28,6 +28,7 @@ class ListCateView: UIViewController{
         configureCollectionView()
         print("listView")
     }
+    
     func configureCollectionView() {
         //cView.register(ListCateView.self, forCellWithReuseIdentifier: "cell")
         //여기를 해야 뷰가 뜸

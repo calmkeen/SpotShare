@@ -41,4 +41,10 @@ class ContextView: UIViewController{
     }
     
     
+    func make(){
+        contextView.snp.makeConstraints{ make in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
+        
+    }
 }

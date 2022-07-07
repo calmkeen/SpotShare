@@ -12,13 +12,13 @@ import Firebase
 
 class AddView: UIViewController{
     
-
+    
     var ref: DatabaseReference! = Database.database().reference()
     //let photomodel = photomo
     
-//    self.ref = FIRDatabase.database().reference()
-//    let itemRef = self.ref.child("list")
-//    itemRef.setValue(self.todos)
+    //    self.ref = FIRDatabase.database().reference()
+    //    let itemRef = self.ref.child("list")
+    //    itemRef.setValue(self.todos)
     let listview = ListCateView()
     
     let addViewStack: UIView = {
@@ -26,6 +26,7 @@ class AddView: UIViewController{
         view.backgroundColor = .white
         return view
     }()
+    
     let addlabel: UILabel = {
         let label = UILabel()
         label.text = "게시물 추가"
@@ -33,12 +34,13 @@ class AddView: UIViewController{
         
         return label
     }()
+    
     let imageAdd: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "도라에몽")
         image.backgroundColor = .gray
         image.layer.cornerRadius = 15
-
+        
         return image
     }()
     let nameLabel: UILabel = {
@@ -73,6 +75,7 @@ class AddView: UIViewController{
         text.layer.cornerRadius = 5
         return text
     }()
+    
     let tagText: UITextField = {
         let text = UITextField()
         text.text = "  내용을 입력하세요"
@@ -88,12 +91,12 @@ class AddView: UIViewController{
         btn.setImage(UIImage(systemName: "plus.square.on.square"), for: .normal)
         return btn
     }()
+    
     let cancelBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(systemName: "xmark"), for: .normal)
         return btn
     }()
-    
     
     override func viewDidLoad() {
         
@@ -121,8 +124,8 @@ class AddView: UIViewController{
         addViewStack.addSubview(selectBtn)
         addViewStack.addSubview(cancelBtn)
         addViewStack.addSubview(addBtn)
-        
     }
+    
     func Make(){
         addViewStack.snp.makeConstraints{ make in
             make.edges.equalTo(view.self.safeAreaLayoutGuide)
@@ -172,29 +175,30 @@ class AddView: UIViewController{
             make.right.equalTo(20)
         }
     }
+    
     @objc func addBtnClcik(sender: UIButton){
         let itemRef = ref.child("list/album/tag")
-                //itemRef.setValue(imageAdd)
-                itemRef.setValue(["nameText": nameText])
-                //itemRef.setValue(tagText)
+        //itemRef.setValue(imageAdd)
+        itemRef.setValue(["nameText": nameText])
+        //itemRef.setValue(tagText)
         
         
         let vc =  MainView()
         navigationController?.pushViewController(vc, animated: true)
         print("저장되었습니다.")
-
+        
     }
-//    @objc func cancelBtnClick(sender: UIButton){
-//        let vc = listview
-//        navigationController?.pushViewController(vc, animated: true)
-//        print("취소")
-//    }
+    
+    //    @objc func cancelBtnClick(sender: UIButton){
+    //        let vc = listview
+    //        navigationController?.pushViewController(vc, animated: true)
+    //        print("취소")
+    //    }
+    
     func buttonAction(){
         //self.ref = FIRDatabase.database().reference("https://myspot-e0151-default-rtdb.firebaseio.com/")
         
         addBtn.addTarget(self, action: #selector(addBtnClcik), for: .touchUpInside)
-//        cancelBtn.addTarget(self, action: #selector(cancelBtnClick), for: .touchUpInside)
+        //        cancelBtn.addTarget(self, action: #selector(cancelBtnClick), for: .touchUpInside)
     }
-
-    
 }
